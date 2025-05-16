@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + restaurantThumbnail + ')'}"></div>
+      <mat-card-title  title="{{restaurantName}}">{{restaurantName}}</mat-card-title>
+      <mat-card-subtitle  title="{{cuisines}}">{{cuisines}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image width="400" height="300" src="{{restaurantThumbnail}}" alt="Restaurant {{restaurantName}}">
+    <mat-card-content>
+      <p>Rating: <span class="rating-star">{{'★'.repeat(math.round(rating))}}</span></p>
+      <p>Review: {{review}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="warn">Order Now</button>
+    </mat-card-actions>
+  </mat-card>

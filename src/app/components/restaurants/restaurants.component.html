@@ -1,0 +1,29 @@
+<app-nav-bar [userName]="userName"></app-nav-bar>
+<div class="restaurant-container">
+    <div class="menu-bar">
+        <h3 class="tagline">Choose your favourite one</h3>
+        <div class="filters">
+            <app-search-bar (searchQueryEvent)="searchQuery($event)"></app-search-bar>
+            <app-dropdown [selectedValue]="selectedValue" [sortOptions]="sortOptions" (sortEvent)="sortRestaurants($event)"></app-dropdown>
+        </div>
+    </div>
+
+
+
+    <div class="restaurant-cards" [class]="{'empty-search': !restaurants.length}" *ngIf="!restaurants.length">
+        <div class="empty-restaurant">
+            <mat-spinner *ngIf="!restaurantsConstant.length"></mat-spinner>
+            <h3 *ngIf="restaurantsConstant.length">
+                No Restaurants found!
+            </h3>
+        </div>
+    </div>
+
+    <div class="restaurant-cards">
+        <div *ngFor="let restaurant of restaurants" class="restaurant">
+            <app-restaurant-card [restaurantName]="restaurant.name" [restaurantThumbnail]="restaurant.thumbnail_image" [restaurantImage]="restaurant.feature_image"
+            [cuisines]="restaurant.cuisines" [rating]="restaurant.rating" [review]="restaurant.reviews" (click)="goToRestaurant(restaurant)" ></app-restaurant-card>
+        </div>
+    </div>
+
+</div>
